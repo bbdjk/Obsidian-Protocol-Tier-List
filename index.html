@@ -11,12 +11,12 @@
     
     <div class="header-area">
         <h1>옵시디언 프로토콜 티어리스트</h1>
-        <button onclick="saveTierList()" class="save-btn">📷 이미지로 저장</button>
+        <button onclick="saveTierList()" class="save-btn">📷 티어리스트 이미지로 저장</button>
     </div>
 
     <div class="main-container">
         
-        <div class="left-panel" id="capture-area">
+        <div class="left-panel">
             <div class="tier-row">
                 <div class="tier-label" style="background-color: #c77fff;">OP</div>
                 <div class="tier-content" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
@@ -41,6 +41,14 @@
 
         <div class="right-panel" ondrop="drop(event)" ondragover="allowDrop(event)">
             <h3 style="margin-top:0; text-align:center;">부품 목록</h3>
+            
+            <div class="category-menu">
+                <button onclick="changeCategory('UN')" class="cat-btn" id="btn-UN">UN</button>
+                <button onclick="changeCategory('RDL')" class="cat-btn" id="btn-RDL">RDL</button>
+                <button onclick="changeCategory('GOF')" class="cat-btn" id="btn-GOF">GOF</button>
+                <button onclick="changeCategory('PD')" class="cat-btn" id="btn-PD">PD</button>
+            </div>
+
             <div id="bank-content"></div>
         </div>
 
