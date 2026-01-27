@@ -56,7 +56,6 @@ h1 { margin: 5px 0; font-size: 24px; }
     margin-bottom: 5px;
     min-height: 150px;
     background-color: #1e1e1e;
-    /* ★ 핵심: 내용물이 많아져서 높이가 늘어나면 라벨(S,A..)도 같이 늘어남 */
     align-items: stretch; 
 }
 
@@ -74,12 +73,9 @@ h1 { margin: 5px 0; font-size: 24px; }
 .tier-content {
     flex-grow: 1;
     display: flex;
-    
-    /* 화면에서는 가로 스크롤로 보기 */
     flex-wrap: nowrap; 
     overflow-x: auto;  
-    
-    align-items: center; /* 세로 중앙 정렬 */
+    align-items: center; 
     padding: 5px;
     gap: 5px;
 }
@@ -109,16 +105,18 @@ h1 { margin: 5px 0; font-size: 24px; }
     cursor: pointer;
     border: 2px solid transparent;
     border-radius: 5px;
-    font-size: 15px;
+    font-size: 14px; /* 버튼이 많아져서 글씨 크기 살짝 조절 */
     transition: all 0.2s;
     opacity: 0.6;
 }
 .cat-btn:hover { opacity: 1; transform: translateY(-2px); }
 
+/* 각 버튼 색상 */
 #btn-UN { background-color: #354f75; }
 #btn-RDL { background-color: #8f3a3a; }
 #btn-GOF { background-color: #9c8226; }
 #btn-PD { background-color: #3d7046; }
+#btn-DRONE { background-color: #5c4b85; } /* DRONE: 인디고/보라색 */
 
 .cat-btn.active {
     opacity: 1;
