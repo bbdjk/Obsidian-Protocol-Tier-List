@@ -3,7 +3,7 @@
    ========================================== */
 const imageFolder = "./images/";
 const fileExtension = ".png"; 
-const totalImages = 500;  // 81번부터 200번까지
+const totalImages = 500; 
 
 /* ==========================================
    이미지 자동 생성 로직
@@ -22,18 +22,18 @@ window.onload = function() {
         img.draggable = true;
         img.alt = fileName;
 
-        // ★ CSS 강제 적용 (지난번 수정사항 유지)
+        // ★ CSS 강제 적용 (가로 스크롤 시 찌그러짐 방지 추가)
         img.style.width = "120px";
         img.style.height = "auto";
         img.style.maxHeight = "180px";
         img.style.margin = "5px";
-        img.style.cursor = "pointer"; // 커서를 손가락 모양으로 변경
+        img.style.cursor = "pointer";
         img.style.border = "2px solid transparent";
+        img.style.flexShrink = "0"; // ★ [추가됨] 가로 스크롤에서 이미지 찌그러짐 방지
 
         img.onmouseover = function() { this.style.border = "2px solid white"; };
         img.onmouseout = function() { this.style.border = "2px solid transparent"; };
 
-        // ★ 클릭 시 확대 기능 연결
         img.onclick = function() {
             openModal(this.src);
         };
@@ -65,9 +65,11 @@ function drop(ev) {
     var draggedElement = document.getElementById(data);
     
     if (draggedElement) {
+        // 이미지를 다른 이미지 위에/사이에 놓을 때
         if (ev.target.tagName === "IMG") {
-            ev.target.parentNode.appendChild(draggedElement);
+            ev.target.parentNode.insertBefore(draggedElement, ev.target);
         } else {
+            // 빈 공간에 놓을 때
             ev.target.appendChild(draggedElement);
         }
     }
@@ -76,16 +78,16 @@ function drop(ev) {
 /* ==========================================
    추가 기능: 이미지 저장 & 확대 모달
    ========================================== */
-
-// 1. 티어리스트 이미지로 저장하기
 function saveTierList() {
-    const captureArea = document.getElementById("capture-area");
+    const captureArea = document.querySelector(".tier-section"); // 캡처 대상을 티어 영역만으로 한정
     
-    // html2canvas 라이브러리 사용
     html2canvas(captureArea, {
-        backgroundColor: "#222" // 배경색 지정
+        backgroundColor: "#222",
+        scrollX: 0,
+        scrollY: 0,
+        width: captureArea.scrollWidth, // 가로 스크롤 된 전체 영역 캡처
+        windowWidth: document.documentElement.offsetWidth
     }).then(canvas => {
-        // 가상의 링크를 만들어 다운로드 트리거
         const link = document.createElement("a");
         link.download = 'obsidian-tier-list.png';
         link.href = canvas.toDataURL();
@@ -93,17 +95,14 @@ function saveTierList() {
     });
 }
 
-// 2. 모달 열기 (이미지 확대)
 function openModal(src) {
     const modal = document.getElementById("image-modal");
     const modalImg = document.getElementById("modal-img");
-    
-    modal.style.display = "flex"; // 화면에 표시
-    modalImg.src = src;           // 클릭한 이미지 주소 넣기
+    modal.style.display = "flex";
+    modalImg.src = src;
 }
 
-// 3. 모달 닫기 (배경 클릭 시)
 function closeModal() {
     const modal = document.getElementById("image-modal");
-    modal.style.display = "none"; // 화면에서 숨김
+    modal.style.display = "none";
 }

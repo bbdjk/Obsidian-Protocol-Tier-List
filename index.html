@@ -14,32 +14,36 @@
         <button onclick="saveTierList()" class="save-btn">📷 티어리스트 이미지로 저장</button>
     </div>
 
-    <div class="tier-container" id="capture-area">
-        <div class="tier-row">
-            <div class="tier-label" style="background-color: #c77fff;">OP</div>
-            <div class="tier-content" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <div class="main-layout">
+        
+        <div class="tier-section" id="capture-area">
+            <div class="tier-row">
+                <div class="tier-label" style="background-color: #c77fff;">OP</div>
+                <div class="tier-content" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </div>
+            <div class="tier-row">
+                <div class="tier-label" style="background-color: #ff7f7f;">S</div>
+                <div class="tier-content" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </div>
+            <div class="tier-row">
+                <div class="tier-label" style="background-color: #ffbf7f;">A</div>
+                <div class="tier-content" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </div>
+            <div class="tier-row">
+                <div class="tier-label" style="background-color: #ffdf7f;">B</div>
+                <div class="tier-content" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </div>
+            <div class="tier-row">
+                <div class="tier-label" style="background-color: #ffff7f;">C</div>
+                <div class="tier-content" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </div>
         </div>
-        <div class="tier-row">
-            <div class="tier-label" style="background-color: #ff7f7f;">S</div>
-            <div class="tier-content" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-        </div>
-        <div class="tier-row">
-            <div class="tier-label" style="background-color: #ffbf7f;">A</div>
-            <div class="tier-content" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-        </div>
-        <div class="tier-row">
-            <div class="tier-label" style="background-color: #ffdf7f;">B</div>
-            <div class="tier-content" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-        </div>
-        <div class="tier-row">
-            <div class="tier-label" style="background-color: #ffff7f;">C</div>
-            <div class="tier-content" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-        </div>
-    </div>
 
-    <div class="image-bank" ondrop="drop(event)" ondragover="allowDrop(event)">
-        <h3>부품 목록</h3>
-        <div id="bank-content"></div>
+        <div class="bank-section" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <h3>부품 목록 (스크롤 가능)</h3>
+            <div id="bank-content"></div>
+        </div>
+
     </div>
 
     <div id="image-modal" class="modal" onclick="closeModal()">

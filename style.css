@@ -5,11 +5,11 @@ body {
     text-align: center;
     margin: 0;
     padding: 20px;
+    overflow-y: hidden; /* 전체 페이지 스크롤 방지 (내부 스크롤 사용) */
 }
 
-.controls {
-    margin-bottom: 20px;
-}
+h1 { margin-bottom: 10px; }
+.controls { margin-bottom: 15px; }
 
 .save-btn {
     padding: 10px 20px;
@@ -20,26 +20,37 @@ body {
     cursor: pointer;
     border-radius: 5px;
 }
+.save-btn:hover { background-color: #45a049; }
 
-.save-btn:hover {
-    background-color: #45a049;
+/* === 메인 레이아웃 (좌우 배치) === */
+.main-layout {
+    display: flex;
+    gap: 20px;
+    width: 98%;
+    height: 85vh; /* 화면 높이의 85% 사용 */
+    margin: 0 auto;
+    align-items: flex-start;
 }
 
-.tier-container {
-    width: 90%;
-    margin: 0 auto;
+/* === 좌측: 티어리스트 === */
+.tier-section {
+    flex: 3; /* 공간을 3만큼 차지 (넓게) */
     border: 2px solid #333;
-    background-color: #222; /* 캡처 시 배경이 투명하지 않도록 색상 지정 */
+    background-color: #222;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; /* 세로 내용이 길면 스크롤 */
+    max-height: 100%;
 }
 
 .tier-row {
     display: flex;
     border-bottom: 1px solid #333;
-    min-height: 140px;
+    min-height: 140px; /* 최소 높이 */
 }
 
 .tier-label {
-    width: 100px;
+    width: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -47,61 +58,72 @@ body {
     font-weight: bold;
     color: #000;
     border-right: 1px solid #333;
-    flex-shrink: 0;
+    flex-shrink: 0; /* 라벨 크기 고정 */
 }
 
 .tier-content {
     flex-grow: 1;
     background-color: #2c2c2c;
-    padding: 10px;
+    padding: 5px;
+    
+    /* ★ 핵심: 가로 스크롤 설정 ★ */
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap; /* 줄바꿈 금지 (한 줄로 계속) */
+    overflow-x: auto;  /* 가로 스크롤 생성 */
     align-items: center;
 }
 
-.image-bank {
-    width: 90%;
-    margin: 30px auto;
-    padding: 20px;
+/* === 우측: 부품 목록 === */
+.bank-section {
+    flex: 1; /* 공간을 1만큼 차지 (좁게) */
+    min-width: 300px; /* 너무 좁아지지 않게 최소 너비 설정 */
     background-color: #1e1e1e;
     border: 1px dashed #555;
-    min-height: 200px;
+    padding: 10px;
+    
+    /* ★ 핵심: 세로 스크롤 설정 ★ */
+    height: 100%;       /* 부모 높이 꽉 채움 */
+    overflow-y: auto;   /* 세로 스크롤 생성 */
 }
 
 #bank-content {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* 여기는 줄바꿈 허용 */
     gap: 10px;
     justify-content: center;
 }
 
-/* === 모달(이미지 확대) 스타일 === */
+/* 스크롤바 디자인 (크롬, 엣지용) */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #333; }
+::-webkit-scrollbar-thumb { background: #555; border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: #777; }
+
+
+/* === 모달 스타일 === */
 .modal {
-    display: none; /* 평소엔 숨김 */
+    display: none;
     position: fixed;
     z-index: 9999;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.8); /* 배경 어둡게 */
+    background-color: rgba(0,0,0,0.8);
     align-items: center;
     justify-content: center;
 }
-
 .modal-content {
-    max-width: 80%;
-    max-height: 80%;
+    max-width: 85%;
+    max-height: 85%;
     border: 2px solid white;
     box-shadow: 0 0 20px rgba(255,255,255,0.2);
 }
-
 .close {
     position: absolute;
     top: 20px;
     right: 35px;
-    color: #f1f1f1;
+    color: white;
     font-size: 40px;
-    font-weight: bold;
     cursor: pointer;
 }
