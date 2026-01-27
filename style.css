@@ -1,60 +1,72 @@
-/* ==========================================
-   설정 구역
-   ========================================== */
-const imageFolder = "./images/";
-const fileExtension = ".png"; 
-const totalImages = 1000;  // 넉넉하게 잡음
-
-/* ==========================================
-   이미지 자동 생성 로직
-   ========================================== */
-window.onload = function() {
-    const bankContent = document.getElementById("bank-content");
-
-    // ★ 유저 이미지 파일이 081번부터 시작하므로 81로 설정
-    for (let i = 0; i < totalImages; i++) { 
-        
-        let formattedNumber = i.toString().padStart(3, '0'); 
-        let fileName = formattedNumber + fileExtension;
-        
-        let img = document.createElement("img");
-        img.src = imageFolder + fileName;
-        img.id = "img_" + formattedNumber; 
-        img.draggable = true;
-        img.alt = fileName;
-
-        img.ondragstart = drag;
-
-        // 이미지가 없으면 숨김
-        img.onerror = function() {
-            this.style.display = "none";
-        };
-
-        bankContent.appendChild(img);
-    }
-};
-
-/* ==========================================
-   드래그 앤 드롭 기능
-   ========================================== */
-function drag(ev) {
-    ev.dataTransfer.setData("text", ev.target.id);
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
 }
 
-function allowDrop(ev) {
-    ev.preventDefault();
+.tier-container {
+    width: 90%; /* 이미지가 커져서 너비를 좀 더 넓혔습니다 */
+    margin: 0 auto;
+    border: 2px solid #333;
 }
 
-function drop(ev) {
-    ev.preventDefault();
-    var data = ev.dataTransfer.getData("text");
-    var draggedElement = document.getElementById(data);
-    
-    if (draggedElement) {
-        if (ev.target.tagName === "IMG") {
-            ev.target.parentNode.appendChild(draggedElement);
-        } else {
-            ev.target.appendChild(draggedElement);
-        }
-    }
+.tier-row {
+    display: flex;
+    border-bottom: 1px solid #333;
+    min-height: 140px; /* 이미지가 커져서 높이도 늘렸습니다 */
+}
+
+.tier-label {
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+    border-right: 1px solid #333;
+    flex-shrink: 0; /* 라벨 너비 고정 */
+}
+
+.tier-content {
+    flex-grow: 1;
+    background-color: #2c2c2c;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/* 이미지 대기소 스타일 */
+.image-bank {
+    width: 90%;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #1e1e1e;
+    border: 1px dashed #555;
+    min-height: 200px;
+}
+
+#bank-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+/* 이미지 스타일 (1.5배 확대) */
+img {
+    width: 120px;  /* 80px -> 120px 변경 */
+    height: 120px; /* 80px -> 120px 변경 */
+    object-fit: cover; /* 비율 유지하며 꽉 채우기 (필요시 contain으로 변경) */
+    cursor: grab;
+    margin: 5px;
+    border: 2px solid transparent;
+}
+
+img:hover {
+    border: 2px solid white;
 }
