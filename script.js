@@ -3,7 +3,7 @@
    ========================================== */
 const imageBaseFolder = "./images/"; 
 const fileExtension = ".png"; 
-const totalImages = 500; 
+const totalImages = 200; 
 
 let currentCategory = 'UN'; 
 
@@ -168,4 +168,5 @@ function openModal(src) {
 
 function closeModal() {
     document.getElementById("image-modal").style.display = "none";
+
 }
