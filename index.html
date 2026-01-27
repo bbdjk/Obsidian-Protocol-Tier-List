@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게임 티어리스트 메이커</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>게임 캐릭터 티어리스트</h1>
+
+    <div class="tier-container">
+        <div class="tier-row">
+            <div class="tier-label" style="background-color: #ff7f7f;">S</div>
+            <div class="tier-content" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        </div>
+        <div class="tier-row">
+            <div class="tier-label" style="background-color: #ffbf7f;">A</div>
+            <div class="tier-content" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        </div>
+        <div class="tier-row">
+            <div class="tier-label" style="background-color: #ffdf7f;">B</div>
+            <div class="tier-content" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        </div>
+        <div class="tier-row">
+            <div class="tier-label" style="background-color: #ffff7f;">C</div>
+            <div class="tier-content" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        </div>
+    </div>
+
+    <div class="image-bank" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <h3>캐릭터 목록</h3>
+        <div id="bank-content"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

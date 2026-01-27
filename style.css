@@ -1,0 +1,71 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+.tier-container {
+    width: 80%;
+    margin: 0 auto;
+    border: 2px solid #333;
+}
+
+.tier-row {
+    display: flex;
+    border-bottom: 1px solid #333;
+    min-height: 100px;
+}
+
+.tier-label {
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+    border-right: 1px solid #333;
+}
+
+.tier-content {
+    flex-grow: 1;
+    background-color: #2c2c2c;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/* 이미지 대기소 스타일 */
+.image-bank {
+    width: 80%;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #1e1e1e;
+    border: 1px dashed #555;
+    min-height: 150px;
+}
+
+#bank-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+/* 이미지 스타일 */
+img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    cursor: grab;
+    margin: 5px;
+    border: 2px solid transparent;
+}
+
+img:hover {
+    border: 2px solid white;
+}
