@@ -3,7 +3,7 @@
    ========================================== */
 const imageFolder = "./images/";  // 이미지가 있는 폴더 경로
 const fileExtension = ".png";     // 이미지 확장자 (.png, .jpg 등)
-const totalImages = 150;           // 현재 준비된 이미지 개수 (예: 50개면 000~049까지 불러옴)
+const totalImages = 1000;           // 현재 준비된 이미지 개수 (예: 50개면 000~049까지 불러옴)
 
 /* ==========================================
    이미지 자동 생성 로직
@@ -60,5 +60,4 @@ function drop(ev) {
             ev.target.appendChild(draggedElement);
         }
     }
-
 }
