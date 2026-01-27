@@ -5,11 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>옵시디언 프로토콜 티어리스트</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 </head>
 <body>
     <h1>옵시디언 프로토콜 티어리스트</h1>
 
-    <div class="tier-container">
+    <div class="controls">
+        <button onclick="saveTierList()" class="save-btn">📷 티어리스트 이미지로 저장</button>
+    </div>
+
+    <div class="tier-container" id="capture-area">
         <div class="tier-row">
             <div class="tier-label" style="background-color: #c77fff;">OP</div>
             <div class="tier-content" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
@@ -35,6 +40,11 @@
     <div class="image-bank" ondrop="drop(event)" ondragover="allowDrop(event)">
         <h3>부품 목록</h3>
         <div id="bank-content"></div>
+    </div>
+
+    <div id="image-modal" class="modal" onclick="closeModal()">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modal-img">
     </div>
 
     <script src="script.js"></script>
